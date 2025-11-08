@@ -7,14 +7,14 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 # DATABASE URL CONFIGURATION
 # =====================
 # Priority:
-# 1. DATABASE_URL environment variable (for production/PostgreSQL)
+# 1. DATABASE_URL environment variable (for production/PostgreSQL like Render)
 # 2. Default to SQLite for local development
 # =====================
 
 # Get the base directory (datagem_backend folder)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Check for DATABASE_URL environment variable first
+# Check for DATABASE_URL environment variable first (Render sets this automatically)
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # If no DATABASE_URL is set, use SQLite for local development
