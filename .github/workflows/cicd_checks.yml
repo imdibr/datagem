@@ -25,14 +25,6 @@ jobs:
   backend-lint-and-test:
     runs-on: ubuntu-latest
     needs: basic
-    if: |
-      github.event_name == 'pull_request' ||
-      (github.event_name == 'push' && (
-        github.sha != '' &&
-        (startsWith(github.ref, 'refs/heads/') &&
-          ( contains(fromJson('["datagem_backend","datagem_backend/**","requirements.txt"]'), github.event.head_commit.message) )
-        )
-      ))
     defaults:
       run:
         working-directory: datagem_backend
