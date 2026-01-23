@@ -8,6 +8,7 @@ from database import crud, database, models as db_models
 from auth import models as auth_models
 from auth import security # This file now handles hashing
 
+
 router = APIRouter()
 
 @router.post("/signup", response_model=auth_models.UserInDB)
