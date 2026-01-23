@@ -11,6 +11,7 @@ from database import crud, models as db_models
 from chat import models as chat_models
 from chat import tools
 
+
 # =====================
 # GEMINI API KEY CONFIGURATION
 # =====================
