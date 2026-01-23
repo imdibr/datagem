@@ -62,37 +62,37 @@ jobs:
             echo "pytest not available"
           fi
 
-frontend-lint-and-test:
-  runs-on: ubuntu-latest
-  needs: basic
-  defaults:
-    run:
-      working-directory: datagem_frontend
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: List root directory contents
-      run: ls -la
-    - name: List datagem_frontend directory contents
-      run: ls -la datagem_frontend
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-    - name: Install dependencies
-      run: |
-        if [ -f package-lock.json ]; then npm ci; else npm install; fi
-    - name: Run frontend lint (eslint) if available
-      run: |
-        if command -v npx >/dev/null 2>&1; then
-          npx eslint . || true
-        else
-          echo "eslint not installed"
-        fi
-    - name: Run frontend build (optional)
-      run: |
-        if [ -f package.json ] && grep -q "\"build\":" package.json; then
-          npm run build || true
-        else
-          echo "No build script defined"
-        fi
+  frontend-lint-and-test:
+    runs-on: ubuntu-latest
+    needs: basic
+    defaults:
+      run:
+        working-directory: datagem_frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: List root directory contents
+        run: ls -la
+      - name: List datagem_frontend directory contents
+        run: ls -la datagem_frontend
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - name: Run frontend lint (eslint) if available
+        run: |
+          if command -v npx >/dev/null 2>&1; then
+            npx eslint . || true
+          else
+            echo "eslint not installed"
+          fi
+      - name: Run frontend build (optional)
+        run: |
+          if [ -f package.json ] && grep -q "\"build\":" package.json; then
+            npm run build || true
+          else
+            echo "No build script defined"
+          fi
